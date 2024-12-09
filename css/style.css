@@ -393,6 +393,10 @@ footer .social-links a:hover {
   border: none;
 }
 
+.hidden {
+  display: none;
+}
+
 #video-element1,
 #video-element2,
 #video-element3,
