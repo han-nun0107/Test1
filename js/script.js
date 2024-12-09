@@ -399,14 +399,14 @@ function onYouTubeIframeAPIReady() {
       playerVars: {
         autoplay: 1,
         controls: 1,
-        cc_load_policy: 0, // 자막 기본 비활성화
+        cc_load_policy: 0, // 자막 비활성화
       },
       events: {
         onReady: (event) => {
-          // 자막 비활성화를 강제로 설정
+          // 지속적으로 자막 비활성화
           setInterval(() => {
             event.target.setOption("captions", "track", { languageCode: "" });
-          }, 500);
+          }, 1000); // 1초마다 호출
         },
       },
     });
