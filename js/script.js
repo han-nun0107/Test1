@@ -379,3 +379,38 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 /* ------------------ */
+const videoIds = [
+  "youtubePlayer1", // 동영상 ID를 여기에 추가
+  "youtubePlayer2",
+  "youtubePlayer3",
+  "youtubePlayer4",
+  "youtubePlayer5",
+  "youtubePlayer6",
+];
+
+const players = []; // 플레이어 인스턴스를 저장할 배열
+
+// YouTube IFrame API 준비 완료 시 호출
+function onYouTubeIframeAPIReady() {
+  videoIds.forEach((videoId, index) => {
+    const playerId = `player${index + 1}`;
+    const player = new YT.Player(playerId, {
+      height: "390",
+      width: "640",
+      videoId: videoId,
+      playerVars: {
+        autoplay: 1,
+        controls: 1,
+        cc_load_policy: 0, // 기본적으로 자막 비활성화
+      },
+      events: {
+        onReady: (event) => {
+          // 추가로 자막 트랙 비활성화
+          event.target.setOption("captions", "track", { languageCode: "" });
+        },
+      },
+    });
+
+    players.push(player); // 각 플레이어를 배열에 저장
+  });
+}
