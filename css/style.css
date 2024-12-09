@@ -393,6 +393,10 @@ footer .social-links a:hover {
   border: none;
 }
 
+iframe::cue {
+  display: none;
+}
+
 .hidden {
   display: none;
 }
