@@ -384,21 +384,13 @@ footer .social-links a:hover {
 
 .video-iframe {
   display: none; /* 기본적으로 숨김 */
-  position: fixed;
+  position: fixed; /* 고정 위치 */
   top: 0;
-  left: -100%; /* 화면 왼쪽 밖으로 숨김 */
+  left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 1000;
+  z-index: 1000; /* 최상위 레이어 */
   border: none;
-  transition: transform 0.5s ease, opacity 0.5s ease; /* 부드러운 슬라이드 애니메이션 */
-  opacity: 0;
-}
-
-.video-iframe.active {
-  display: block;
-  transform: translateX(0); /* 화면 안으로 슬라이드 */
-  opacity: 1; /* 완전히 보이도록 설정 */
 }
 
 #video-element1,
