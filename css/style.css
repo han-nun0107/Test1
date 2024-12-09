@@ -1,10 +1,24 @@
 body {
-  background-color: #3498db;
+  background-color: #a0c0f0;
   margin: 0;
   font-family: Arial, sans-serif;
   line-height: 1.6;
   color: #333;
+  overflow-y: auto;
   overflow-x: hidden;
+}
+
+body.loading {
+  overflow: hidden;
+}
+
+foreignObject {
+  pointer-events: none;
+}
+
+text {
+  pointer-events: auto;
+  cursor: pointer;
 }
 
 .header {
@@ -17,10 +31,10 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: #ffffff;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background-image: url(../asset/img/loading.png);
   align-items: center;
   z-index: 9999;
   opacity: 1;
@@ -28,11 +42,22 @@ body {
   transition: opacity 1s ease, visibility 1s ease;
 }
 
+.loading-p {
+  color: #030a17;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.loading-div {
+  padding-top: 30px;
+}
+
 .spinner {
   width: 50px;
   height: 50px;
-  border: 5px solid #ccc;
-  border-top-color: #3498db;
+  border: 5px solid #88a6a2;
+  border-top-color: #ffffff;
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
@@ -63,23 +88,39 @@ body {
   transition: width 0.1s ease;
 }
 
+.thx {
+  text-align: center;
+  font-size: 70px;
+  font-weight: 800;
+  margin-bottom: 20px;
+  color: #000000;
+  -webkit-text-stroke: 1px #ffffff;
+}
+
+.lastBtn {
+  text-align: center;
+}
+
+.button {
+  font-size: 20px;
+  padding: 15px;
+  margin-top: 20px;
+  margin: 5px;
+  border-radius: 5px;
+  font-weight: 700;
+  border: 1px solid black;
+  background: #1abc9c;
+}
+
+.button:hover {
+  background: #16a085;
+}
+
 /* 메인 콘텐츠 */
 #main-content {
   opacity: 0;
   visibility: hidden;
   transition: opacity 1s ease, visibility 1s ease; /* 부드러운 페이드인 */
-}
-
-/* 숨겨진 상태 */
-.hidden {
-  opacity: 0;
-  visibility: hidden;
-}
-
-/* 보이는 상태 */
-.visible {
-  opacity: 1 !important;
-  visibility: visible !important;
 }
 
 a {
@@ -93,6 +134,10 @@ h3 {
   margin: 0;
 }
 
+.typed-cursor {
+  display: none;
+}
+
 /* 헤더 */
 header {
   position: fixed;
@@ -100,7 +145,6 @@ header {
   left: 0;
   width: 100%;
   background: #ffffff;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   z-index: 1000;
 }
 
@@ -110,10 +154,16 @@ header nav {
   align-items: center;
   padding: 0 40px;
   height: 80px;
+  background-color: #ffffff;
 }
 
 header .logo img {
   height: 80px;
+  -webkit-user-select: none; /* Chrome, Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE */
+  user-select: none; /* Standard */
+  -webkit-user-drag: none; /* Chrome, Safari */
 }
 
 header .nav-links {
@@ -131,6 +181,7 @@ header .nav-links li {
   color: #2c3e50;
   text-decoration: none;
   margin-right: 20px;
+  cursor: pointer;
 }
 
 .underLine:hover {
@@ -281,36 +332,40 @@ footer .social-links a:hover {
   color: #3498db;
 }
 
-.text-mask {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 10rem; /* 텍스트 크기 */
-  font-weight: bold;
-  color: white;
-  mix-blend-mode: lighten; /* 텍스트 위에 비디오가 보이도록 설정 */
-  /* background: url("asset/video/4.mp4") no-repeat center center; */
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.text-mask-svg {
+.text-mask-svg1,
+.text-mask-svg2,
+.text-mask-svg3,
+.text-mask-svg4,
+.text-mask-svg5,
+.text-mask-svg6 {
   width: 100%;
   height: auto;
-  cursor: pointer;
   position: relative;
+  cursor: pointer;
+  margin-top: 70px;
+  z-index: 10;
 }
 
-.text-mask-svg text {
-  font-size: 10rem; /* 텍스트 크기 */
+.text-mask-svg1 text,
+.text-mask-svg2 text,
+.text-mask-svg3 text,
+.text-mask-svg4 text,
+.text-mask-svg5 text,
+.text-mask-svg6 text {
+  font-size: 40rem;
   font-weight: bold;
-  fill: black; /* 마스킹용 색상 */
-  pointer-events: auto; /* 텍스트만 클릭 가능하도록 설정 */
+  fill: black;
+  pointer-events: auto;
+  cursor: pointer;
+  z-index: 10;
 }
 
-.text-mask-svg video {
+.text-mask-svg1 iframe,
+.text-mask-svg2 iframe,
+.text-mask-svg3 iframe,
+.text-mask-svg4 iframe,
+.text-mask-svg5 iframe,
+.text-mask-svg6 iframe {
   width: 100%;
   height: 100%;
   object-fit: cover; /* 비디오를 텍스트 영역에 맞춤 */
@@ -327,20 +382,172 @@ footer .social-links a:hover {
   transition: all 0.5s ease;
 }
 
+.video-iframe {
+  display: none; /* 기본적으로 숨김 */
+  position: fixed; /* 고정 위치 */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000; /* 최상위 레이어 */
+  border: none;
+}
+
 .hidden {
   display: none;
 }
 
-#video-element {
+#video-element1,
+#video-element2,
+#video-element3,
+#video-element4,
+#video-element5,
+#video-element6 {
   display: block; /* 초기에는 표시되도록 설정 */
-  position: absolute;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover; /* 화면 크기에 맞춤 */
-  z-index: 9999;
+  z-index: 10;
 }
 
-#youtubePlayer {
+.hidden {
+  display: none !important;
+}
+
+.video_bg {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8); /* 어두운 배경 */
+  z-index: 999;
+}
+
+.video_bg iframe {
+  pointer-events: none; /* iframe 내부 클릭 차단 */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%; /* iframe 크기 */
+  height: 100%;
+}
+
+.split-container {
+  display: flex; /* 가로 정렬 */
+  width: 100%;
+  height: 100vh; /* 화면 높이에 맞춤 */
+}
+
+.left-section,
+.right-section {
+  flex: 1; /* 두 섹션을 동일한 크기로 설정 */
+  display: flex;
+  justify-content: center; /* 내용 가로 가운데 정렬 */
+  align-items: center; /* 내용 세로 가운데 정렬 */
+}
+
+.left-section {
+  flex: 1;
+  text-align: center;
+  margin-left: 100px;
+  max-width: none;
+}
+
+.right-section {
+  text-align: left; /* 텍스트 가운데 정렬 */
+  font-size: 1.5rem; /* 텍스트 크기 */
+  color: #333; /* 텍스트 색상 */
+  margin-right: 200px;
+  z-index: 20;
+}
+
+.muteBtn:hover {
+  background-color: #0056b3;
+}
+
+.mute {
+  display: inline-block;
+  width: 100px; /* 고정 너비 */
+  text-align: center;
+  padding: 8px; /* 버튼 여백 */
+  border-radius: 5px;
+  border: 1px solid #ccc; /* 테두리 */
+  background-color: #f0f0f0; /* 배경색 */
+  transition: background-color 0.5s ease;
+  transform: translateX(300%);
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.mute:hover {
+  background-color: #030a17;
+  border: 1px solid #030a17;
+  color: #fff;
+}
+
+.skip-area {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+}
+
+#videoBg1 {
+  display: none; /* 기본적으로 숨김 */
+  position: fixed; /* 화면 기준으로 고정 */
+  top: 0;
+  left: 0;
+  width: 100vw; /* 전체 화면 너비 */
+  height: 100vh; /* 전체 화면 높이 */
+  z-index: 999; /* iframe 아래 */
+  background-color: rgba(0, 0, 0, 0.5); /* 반투명 검정 배경 */
+}
+
+#iframe-youtubePlayer {
+  pointer-events: none;
+}
+
+#overlay {
   pointer-events: auto;
-  user-select: none;
+}
+
+#overlay.inactive {
+  pointer-events: none;
+}
+#muteButton1,
+#muteButton2,
+#muteButton3,
+#muteButton4,
+#muteButton5,
+#muteButton6 {
+  pointer-events: auto;
+  visibility: visible;
+  opacity: 1;
+  z-index: 10;
+  position: relative;
+}
+#text-mask-svg1,
+#text-mask-svg2,
+#text-mask-svg3,
+#text-mask-svg4,
+#text-mask-svg5,
+#text-mask-svg6 {
+  position: relative;
+  pointer-events: auto; /* 전체 SVG에서 클릭 허용 */
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+}
+
+#text-element2 {
+  pointer-events: auto; /* 클릭 이벤트 허용 */
+  visibility: visible; /* 요소가 화면에 표시 */
+  opacity: 1; /* 완전히 불투명 */
+  z-index: 10; /* 다른 요소 위에 배치 */
 }
