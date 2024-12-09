@@ -323,3 +323,42 @@ setInterval(() => {
     }
   }
 }, 500);
+
+document.addEventListener("DOMContentLoaded", () => {
+  const masks = document.querySelectorAll("[id^='text-mask-svg']");
+
+  masks.forEach((mask, index) => {
+    const sectionNumber = index + 1;
+    const iframe = document.querySelector(`#youtubePlayer${sectionNumber}`);
+    const textElement = mask.querySelector("text");
+
+    if (iframe && textElement) {
+      textElement.style.pointerEvents = "auto";
+      textElement.style.cursor = "pointer";
+
+      // 텍스트 클릭 이벤트
+      textElement.addEventListener("click", () => {
+        console.log(`텍스트 클릭됨: 섹션 ${sectionNumber}`);
+
+        // 모든 iframe 숨기기
+        const allIframes = document.querySelectorAll(".video-iframe");
+        allIframes.forEach((frame) => {
+          frame.classList.remove("active");
+          setTimeout(() => {
+            frame.style.display = "none";
+          }, 500); // 애니메이션 시간과 일치
+        });
+
+        // 클릭한 iframe 표시 (슬라이드 효과 시작)
+        iframe.style.display = "block";
+        setTimeout(() => {
+          iframe.classList.add("active");
+        }, 10);
+      });
+    } else {
+      console.error(
+        `iframe 또는 textElement를 찾을 수 없습니다. (섹션: ${sectionNumber})`
+      );
+    }
+  });
+});
