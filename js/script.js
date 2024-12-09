@@ -315,70 +315,30 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 /* --------------------------------------------------------- */
+// YouTube IFrame API 로드 후 실행
 function onYouTubeIframeAPIReady() {
-  const playerInstances = {}; // 각 iframe의 YouTube Player 인스턴스 저장
+  const players = [];
+  for (let i = 1; i <= 6; i++) {
+    const player = new YT.Player(`youtubePlayer${i}`, {
+      events: {
+        onStateChange: (event) => handleAdState(event, player),
+      },
+    });
+    players.push(player);
+  }
 
-  // 각 iframe에 대해 설정
-  const setupYouTubePlayers = () => {
-    for (let i = 1; i <= 6; i++) {
-      const iframeId = `youtubePlayer${i}`;
-      const iframeElement = document.getElementById(iframeId);
-
-      if (iframeElement) {
-        // YouTube Player 초기화
-        playerInstances[iframeId] = new YT.Player(iframeId, {
-          events: {
-            onStateChange: (event) => handleStateChange(event, iframeId),
-          },
-        });
-
-        // 스킵 버튼 감지 영역 추가
-        const skipArea = document.createElement("div");
-        skipArea.classList.add("skip-area");
-        skipArea.style.position = "absolute";
-        skipArea.style.top = "85%"; // 초기 추정 위치
-        skipArea.style.right = "5%";
-        skipArea.style.width = "15%";
-        skipArea.style.height = "10%";
-        skipArea.style.zIndex = "1000";
-        skipArea.style.pointerEvents = "auto";
-        skipArea.style.display = "none"; // 기본적으로 숨김
-
-        iframeElement.parentElement.appendChild(skipArea);
-
-        // 스킵 버튼 클릭 이벤트 처리
-        skipArea.addEventListener("click", () => {
-          console.log(`${iframeId}의 스킵 버튼 클릭`);
-          const player = playerInstances[iframeId];
-          if (player && player.getAdState && player.getAdState() === 1) {
-            player.seekTo(player.getDuration()); // 광고 건너뛰기
+  function handleAdState(event, player) {
+    if (event.data === YT.PlayerState.PLAYING) {
+      // 광고 감지
+      if (player.getAdState && player.getAdState() === 1) {
+        console.log("광고 재생 중...");
+        // 광고 건너뛰기 (광고 재생 후 특정 시점으로 이동)
+        setTimeout(() => {
+          if (player.getAdState() === 1) {
+            player.seekTo(player.getDuration()); // 광고 스킵
           }
-        });
-      } else {
-        console.warn(`iframe ID ${iframeId}를 찾을 수 없습니다.`);
+        }, 1000); // 5초 후 실행
       }
     }
-  };
-
-  // 광고 상태에 따른 스킵 버튼 표시/숨김 처리
-  const handleStateChange = (event, iframeId) => {
-    const player = playerInstances[iframeId];
-    const skipArea = player
-      .getIframe()
-      .parentElement.querySelector(".skip-area");
-
-    if (event.data === YT.PlayerState.PLAYING && player.getAdState) {
-      const isAd = player.getAdState(); // 광고 재생 여부 확인
-      if (isAd) {
-        console.log(`${iframeId} 광고 재생 중`);
-        skipArea.style.display = "block"; // 스킵 버튼 표시
-      } else {
-        skipArea.style.display = "none"; // 광고가 아니면 숨김
-      }
-    } else {
-      skipArea.style.display = "none"; // 광고 상태가 아니면 숨김
-    }
-  };
-
-  setupYouTubePlayers();
+  }
 }
