@@ -236,6 +236,15 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       }
     }
+
+    const player = new YT.Player("youtubePlayer1", {
+      events: {
+        onReady: (event) => {
+          // 자막 비활성화
+          event.target.setOption("captions", "track", { languageCode: "" });
+        },
+      },
+    });
   }
 
   // YouTube API 로드
