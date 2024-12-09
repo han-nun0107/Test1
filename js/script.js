@@ -315,30 +315,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 /* --------------------------------------------------------- */
-// YouTube IFrame API 로드 후 실행
-function onYouTubeIframeAPIReady() {
-  const players = [];
-  for (let i = 1; i <= 6; i++) {
-    const player = new YT.Player(`youtubePlayer${i}`, {
-      events: {
-        onStateChange: (event) => handleAdState(event, player),
-      },
-    });
-    players.push(player);
-  }
-
-  function handleAdState(event, player) {
-    if (event.data === YT.PlayerState.PLAYING) {
-      // 광고 감지
-      if (player.getAdState && player.getAdState() === 1) {
-        console.log("광고 재생 중...");
-        // 광고 건너뛰기 (광고 재생 후 특정 시점으로 이동)
-        setTimeout(() => {
-          if (player.getAdState() === 1) {
-            player.seekTo(player.getDuration()); // 광고 스킵
-          }
-        }, 1000); // 5초 후 실행
-      }
+setInterval(() => {
+  if (document.querySelectorAll(".ad-showing").length > 0) {
+    const video = document.querySelector("video");
+    if (video) {
+      video.currentTime = video.duration;
     }
   }
-}
+}, 500);
