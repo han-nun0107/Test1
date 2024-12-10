@@ -155,6 +155,18 @@ document.addEventListener("DOMContentLoaded", () => {
       entries.forEach((entry) => {
         const iframe = entry.target.querySelector("iframe");
 
+        iframes.forEach((iframe) => {
+          iframe.contentWindow.postMessage(
+            '{"event":"command","func":"seekTo","args":[0, true]}',
+            "*"
+          );
+          iframe.contentWindow.postMessage(
+            '{"event":"command","func":"pauseVideo","args":""}',
+            "*"
+          );
+          console.log(`${iframe.id} initialized to 0 and paused.`);
+        });
+
         if (entry.isIntersecting) {
           console.log(`${entry.target.id} 보임`);
           if (iframe) {
