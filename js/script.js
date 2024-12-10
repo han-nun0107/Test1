@@ -94,19 +94,25 @@ function animateText(section) {
   }
 }
 
-// 휠 이벤트 리스너
+// 휠, 스페이스바 이벤트 리스너(iframe 초기화 포함)
 function resetAllIframes() {
   const iframes = document.querySelectorAll("iframe");
   iframes.forEach((iframe) => {
-    iframe.contentWindow.postMessage(
-      '{"event":"command","func":"pauseVideo","args":""}',
-      "*"
-    );
-    iframe.contentWindow.postMessage(
-      '{"event":"command","func":"seekTo","args":[0, true]}',
-      "*"
-    );
-    console.log(`iframe ${iframe.id} 초기화 완료`);
+    const iframeStyle = window.getComputedStyle(iframe);
+    if (iframeStyle.display === "none") {
+      // display: none 상태일 때만 초기화
+      iframe.contentWindow.postMessage(
+        '{"event":"command","func":"pauseVideo","args":""}',
+        "*"
+      );
+      iframe.contentWindow.postMessage(
+        '{"event":"command","func":"seekTo","args":[0, true]}',
+        "*"
+      );
+      console.log(`iframe ${iframe.id} 초기화 완료 (display: none 상태)`);
+    } else {
+      console.log(`iframe ${iframe.id} 초기화 건너뜀 (display: block 상태)`);
+    }
   });
 }
 
