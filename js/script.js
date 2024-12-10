@@ -198,7 +198,11 @@ document.addEventListener("DOMContentLoaded", () => {
 // Typed.js 애니메이션
 document.addEventListener("DOMContentLoaded", () => {
   new Typed(".thx", {
-    strings: ["Thanks For Watching", "봐주셔서 감사합니다."],
+    strings: [
+      "클립 따주신 쿼카인분들 감사합니다.",
+      "Thanks For Watching",
+      "봐주셔서 감사합니다.",
+    ],
     typeSpeed: 150,
     backSpeed: 150,
     backDelay: 1000,
