@@ -95,7 +95,27 @@ function animateText(section) {
 }
 
 // 휠 이벤트 리스너
+function resetAllIframes() {
+  const iframes = document.querySelectorAll("iframe");
+  iframes.forEach((iframe) => {
+    iframe.contentWindow.postMessage(
+      '{"event":"command","func":"pauseVideo","args":""}',
+      "*"
+    );
+    iframe.contentWindow.postMessage(
+      '{"event":"command","func":"seekTo","args":[0, true]}',
+      "*"
+    );
+    console.log(`iframe ${iframe.id} 초기화 완료`);
+  });
+}
+
+// 마우스 휠 이벤트 리스너
 window.addEventListener("wheel", (event) => {
+  // 모든 iframe 동영상 초기화
+  resetAllIframes();
+
+  // 섹션 변경
   if (event.deltaY > 0) {
     changeSection("next");
   } else if (event.deltaY < 0) {
@@ -107,6 +127,11 @@ window.addEventListener("wheel", (event) => {
 window.addEventListener("keydown", (event) => {
   if (event.code === "Space") {
     event.preventDefault();
+
+    // 모든 iframe 동영상 초기화
+    resetAllIframes();
+
+    // 다음 섹션으로 이동
     changeSection("next");
   }
 });
@@ -150,41 +175,87 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // IntersectionObserver로 섹션 상태 감지
 document.addEventListener("DOMContentLoaded", () => {
+  const sections = document.querySelectorAll(".parallax__item");
+
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         const iframe = entry.target.querySelector("iframe");
+        const video = entry.target.querySelector("video");
 
         if (entry.isIntersecting) {
           console.log(`${entry.target.id} 보임`);
+
+          // 현재 섹션 동영상 초기화 후 재생
           if (iframe) {
-            // 동영상을 0초로 초기화하고 재생
-            iframe.contentWindow.postMessage(
-              '{"event":"command","func":"seekTo","args":[0, true]}',
-              "*"
-            );
-            iframe.contentWindow.postMessage(
-              '{"event":"command","func":"playVideo","args":""}',
-              "*"
-            );
+            setTimeout(() => {
+              iframe.contentWindow.postMessage(
+                '{"event":"command","func":"seekTo","args":[0, true]}',
+                "*"
+              );
+              iframe.contentWindow.postMessage(
+                '{"event":"command","func":"playVideo","args":""}',
+                "*"
+              );
+            }, 500); // 500ms 지연 후 재생
+          }
+          if (video) {
+            video.currentTime = 0;
+            video.play();
           }
         } else {
           console.log(`${entry.target.id} 벗어남`);
+
+          // 벗어난 섹션 동영상 일시 정지
           if (iframe) {
-            // 동영상 일시 정지
             iframe.contentWindow.postMessage(
               '{"event":"command","func":"pauseVideo","args":""}',
               "*"
             );
           }
+          if (video) {
+            video.pause();
+            video.currentTime = 0;
+          }
         }
       });
     },
-    { threshold: 0.5 } // 뷰포트의 50% 이상 보이면 활성화
+    { threshold: 0.7 } // 70% 이상 보일 때만 트리거
   );
 
-  const sections = document.querySelectorAll(".parallax__item");
+  // 모든 섹션에 대해 observer 연결
   sections.forEach((section) => observer.observe(section));
+
+  // 섹션 이동 시 모든 동영상 초기화
+  function resetAllVideos() {
+    sections.forEach((section) => {
+      const iframe = section.querySelector("iframe");
+      const video = section.querySelector("video");
+
+      if (iframe) {
+        iframe.contentWindow.postMessage(
+          '{"event":"command","func":"pauseVideo","args":""}',
+          "*"
+        );
+        iframe.contentWindow.postMessage(
+          '{"event":"command","func":"seekTo","args":[0, true]}',
+          "*"
+        );
+      }
+      if (video) {
+        video.pause();
+        video.currentTime = 0;
+      }
+    });
+  }
+
+  // 섹션 변경 이벤트 발생 시 모든 동영상 초기화
+  window.addEventListener("wheel", resetAllVideos);
+  window.addEventListener("keydown", (event) => {
+    if (event.code === "ArrowUp" || event.code === "ArrowDown") {
+      resetAllVideos();
+    }
+  });
 });
 
 // Iframe 및 동영상 토글 처리
