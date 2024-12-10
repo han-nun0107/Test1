@@ -111,30 +111,80 @@ function resetAllIframes() {
 }
 
 // 마우스 휠 이벤트 리스너
-window.addEventListener("wheel", (event) => {
-  // 모든 iframe 동영상 초기화
-  resetAllIframes();
+// window.addEventListener("wheel", (event) => {
+//   // 모든 iframe 동영상 초기화
+//   resetAllIframes();
 
-  // 섹션 변경
-  if (event.deltaY > 0) {
-    changeSection("next");
-  } else if (event.deltaY < 0) {
-    changeSection("prev");
-  }
-});
+//   // 섹션 변경
+//   if (event.deltaY > 0) {
+//     changeSection("next");
+//   } else if (event.deltaY < 0) {
+//     changeSection("prev");
+//   }
+// });
 
-// 키보드 이벤트 리스너 (스페이스바로 섹션 이동)
-window.addEventListener("keydown", (event) => {
-  if (event.code === "Space") {
+// // 키보드 이벤트 리스너 (스페이스바로 섹션 이동)
+// window.addEventListener("keydown", (event) => {
+//   if (event.code === "Space") {
+//     event.preventDefault();
+
+//     // 모든 iframe 동영상 초기화
+//     resetAllIframes();
+
+//     // 다음 섹션으로 이동
+//     changeSection("next");
+//   }
+// });
+
+function handleInputEvent(event) {
+  // Space 키 또는 마우스 휠 동작에 대한 처리
+  const isSpaceKey = event.type === "keydown" && event.code === "Space";
+  const isWheelEvent = event.type === "wheel";
+
+  if (isSpaceKey || isWheelEvent) {
     event.preventDefault();
 
-    // 모든 iframe 동영상 초기화
-    resetAllIframes();
+    // 활성화된 iframe 상태 확인
+    const iframes = document.querySelectorAll("iframe");
+    let isAnyIframeActive = false;
 
-    // 다음 섹션으로 이동
-    changeSection("next");
+    iframes.forEach((iframe) => {
+      const iframeStyle = window.getComputedStyle(iframe);
+      if (iframeStyle.display === "block") {
+        isAnyIframeActive = true;
+      }
+    });
+
+    if (isAnyIframeActive) {
+      // iframe이 block 상태일 때
+      console.log("입력 차단: iframe이 활성화되어 있음");
+      return; // 입력 무시
+    }
+
+    // iframe이 모두 비활성화(none 상태)일 때
+    console.log("입력 허용: iframe이 비활성화 상태");
+
+    // 섹션 이동 처리
+    if (isSpaceKey) {
+      // Space 키 입력
+      resetAllIframes(); // 모든 iframe 동영상 초기화
+      changeSection("next"); // 다음 섹션으로 이동
+    } else if (isWheelEvent) {
+      // 마우스 휠 입력
+      if (event.deltaY > 0) {
+        changeSection("next"); // 휠 아래로: 다음 섹션으로 이동
+      } else if (event.deltaY < 0) {
+        changeSection("prev"); // 휠 위로: 이전 섹션으로 이동
+      }
+    }
   }
-});
+}
+
+// 키보드 이벤트 리스너 추가
+window.addEventListener("keydown", handleInputEvent);
+
+// 마우스 휠 이벤트 리스너 추가
+window.addEventListener("wheel", handleInputEvent);
 
 // 로딩 화면 처리
 document.addEventListener("DOMContentLoaded", () => {
@@ -515,59 +565,59 @@ function onYouTubeIframeAPIReady() {
   });
 }
 
-// ESC 키를 제외한 키 입력 차단(iframe)
-function blockAllKeysExceptEsc(event) {
-  if (event.key === "Escape") {
-    console.log("ESC 키 입력 허용");
-    return; // ESC 키는 허용
-  }
-  if (event.code === "Space") {
-    console.log("스페이스 바 입력 차단");
-    event.preventDefault(); // 스페이스 바 기본 동작 차단
-    return;
-  }
-  event.preventDefault();
-  console.log(`키 입력 차단됨: ${event.key}`);
-}
+// // ESC 키를 제외한 키 입력 차단(iframe)
+// function blockAllKeysExceptEsc(event) {
+//   if (event.key === "Escape") {
+//     console.log("ESC 키 입력 허용");
+//     return; // ESC 키는 허용
+//   }
+//   if (event.code === "Space") {
+//     console.log("스페이스 바 입력 차단");
+//     event.preventDefault(); // 스페이스 바 기본 동작 차단
+//     return;
+//   }
+//   event.preventDefault();
+//   console.log(`키 입력 차단됨: ${event.key}`);
+// }
 
-// Iframe 활성화 상태 관리
-function manageIframeKeyBlocking() {
-  const iframes = document.querySelectorAll("iframe");
-  let isAnyIframeActive = false;
+// // Iframe 활성화 상태 관리
+// function manageIframeKeyBlocking() {
+//   const iframes = document.querySelectorAll("iframe");
+//   let isAnyIframeActive = false;
 
-  iframes.forEach((iframe) => {
-    const iframeStyle = window.getComputedStyle(iframe);
-    if (iframeStyle.display === "block") {
-      isAnyIframeActive = true;
-    }
-  });
+//   iframes.forEach((iframe) => {
+//     const iframeStyle = window.getComputedStyle(iframe);
+//     if (iframeStyle.display === "block") {
+//       isAnyIframeActive = true;
+//     }
+//   });
 
-  if (isAnyIframeActive) {
-    console.log("iframe이 활성화됨, ESC 제외 키 입력 차단 활성화");
-    window.addEventListener("keydown", blockAllKeysExceptEsc);
-  } else {
-    console.log("활성화된 iframe 없음, ESC 제외 키 입력 차단 비활성화");
-    window.removeEventListener("keydown", blockAllKeysExceptEsc);
-  }
-}
+//   if (isAnyIframeActive) {
+//     console.log("iframe이 활성화됨, ESC 제외 키 입력 차단 활성화");
+//     window.addEventListener("keydown", blockAllKeysExceptEsc);
+//   } else {
+//     console.log("활성화된 iframe 없음, ESC 제외 키 입력 차단 비활성화");
+//     window.removeEventListener("keydown", blockAllKeysExceptEsc);
+//   }
+// }
 
-// Iframe display 상태 감지
-function observeIframeDisplay() {
-  const iframes = document.querySelectorAll("iframe");
+// // Iframe display 상태 감지
+// function observeIframeDisplay() {
+//   const iframes = document.querySelectorAll("iframe");
 
-  const observer = new MutationObserver(() => {
-    manageIframeKeyBlocking();
-  });
+//   const observer = new MutationObserver(() => {
+//     manageIframeKeyBlocking();
+//   });
 
-  iframes.forEach((iframe) => {
-    observer.observe(iframe, {
-      attributes: true,
-      attributeFilter: ["style"], // style 속성 변경 감지
-    });
-  });
-}
+//   iframes.forEach((iframe) => {
+//     observer.observe(iframe, {
+//       attributes: true,
+//       attributeFilter: ["style"], // style 속성 변경 감지
+//     });
+//   });
+// }
 
-// DOMContentLoaded 이후 실행
-document.addEventListener("DOMContentLoaded", () => {
-  observeIframeDisplay();
-});
+// // DOMContentLoaded 이후 실행
+// document.addEventListener("DOMContentLoaded", () => {
+//   observeIframeDisplay();
+// });
