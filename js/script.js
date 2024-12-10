@@ -136,6 +136,22 @@ function resetAllIframes() {
 //   }
 // });
 
+// 공통 함수: 활성화된 iframe 상태 확인
+function isAnyIframeActive() {
+  const iframes = document.querySelectorAll("iframe");
+  let isActive = false;
+
+  iframes.forEach((iframe) => {
+    const iframeStyle = window.getComputedStyle(iframe);
+    if (iframeStyle.display === "block") {
+      isActive = true;
+    }
+  });
+
+  return isActive; // iframe이 block 상태인 경우 true 반환
+}
+
+// 키보드 및 마우스 휠 이벤트 핸들러
 function handleInputEvent(event) {
   // Space 키 또는 마우스 휠 동작에 대한 처리
   const isSpaceKey = event.type === "keydown" && event.code === "Space";
@@ -144,41 +160,33 @@ function handleInputEvent(event) {
   if (isSpaceKey || isWheelEvent) {
     event.preventDefault();
 
-    // 활성화된 iframe 상태 확인
-    const iframes = document.querySelectorAll("iframe");
-    let isAnyIframeActive = false;
-
-    iframes.forEach((iframe) => {
-      const iframeStyle = window.getComputedStyle(iframe);
-      if (iframeStyle.display === "block") {
-        isAnyIframeActive = true;
-      }
-    });
-
-    if (isAnyIframeActive) {
-      // iframe이 block 상태일 때
+    if (isAnyIframeActive()) {
+      // iframe이 활성화된 경우 입력 차단
       console.log("입력 차단: iframe이 활성화되어 있음");
-      return; // 입력 무시
+      return;
     }
 
-    // iframe이 모두 비활성화(none 상태)일 때
+    // iframe이 비활성화된 경우에만 동작
     console.log("입력 허용: iframe이 비활성화 상태");
 
-    // 섹션 이동 처리
     if (isSpaceKey) {
-      // Space 키 입력
-      resetAllIframes(); // 모든 iframe 동영상 초기화
-      changeSection("next"); // 다음 섹션으로 이동
+      // Space 키로 다음 섹션으로 이동
+      resetAllIframes();
+      changeSection("next");
     } else if (isWheelEvent) {
-      // 마우스 휠 입력
+      // 마우스 휠 방향에 따라 섹션 이동
       if (event.deltaY > 0) {
-        changeSection("next"); // 휠 아래로: 다음 섹션으로 이동
+        changeSection("next");
       } else if (event.deltaY < 0) {
-        changeSection("prev"); // 휠 위로: 이전 섹션으로 이동
+        changeSection("prev");
       }
     }
   }
 }
+
+// 이벤트 리스너 등록
+window.addEventListener("keydown", handleInputEvent);
+window.addEventListener("wheel", handleInputEvent);
 
 // 키보드 이벤트 리스너 추가
 window.addEventListener("keydown", handleInputEvent);
