@@ -7,7 +7,7 @@
     <!--  <meta property="og:url" content="kimquokka.dothome.co.kr" /> -->
     <meta property="og:image" content="./asset/img/ogImg.png" />
     <meta property="og:description" content="madeBy han_nun" />
-    <title>Happy Birthday!</title>
+    <title>K-POP</title>
     <link
       href="https://webfontworld.github.io/NexonLv1Gothic/NexonLv1Gothic.css"
       rel="stylesheet"
@@ -17,7 +17,12 @@
       rel="stylesheet"
     />
 
-    <link rel="icon" type="image/png" sizes="32x32" href="asset/img/main.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="asset/img/k-pop.png"
+    />
 
     <!-- GSAP와 플러그인 로드 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -28,20 +33,9 @@
     <!-- 스타일 -->
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/slide.css" />
+    <link rel="stylesheet" href="css/pop.css" />
   </head>
   <body>
-    <!-- 로딩 페이지 -->
-    <div id="loading-page">
-      <div class="spinner"></div>
-      <div class="loading-div">
-        <p class="loading-p">로딩 중</p>
-        <p class="loading-p">조금만 기다려 주세요.</p>
-      </div>
-      <div class="progress-bar">
-        <div class="progress"></div>
-      </div>
-    </div>
-
     <!-- 실제 콘텐츠 -->
     <header class="header">
       <nav>
@@ -78,13 +72,22 @@
 
     <!-- 메인 섹션 -->
     <main id="parallax__cont">
-      <section id="section1" class="parallax__item">
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus
-          adipisci commodi accusantium nulla exercitationem, temporibus est,
-          recusandae, ab eligendi reprehenderit iste totam! Iusto voluptatibus
-          pariatur quis accusantium modi at inventore!
-        </p>
+      <section
+        id="section1"
+        class="parallax__item home"
+        style="
+          background-image: url(./asset/img/k-popBG.png);
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: center;
+        "
+      >
+        <div class="music">
+          <a href="index.html" id="main-k">메인 페이지</a>
+          <a href="q-pop.html" id="q-pop-k">쿼카 노래</a>
+          <a href="pop.html" id="pop-k">POP</a>
+          <a href="j-pop.html" id="j-pop-k">J-POP</a>
+        </div>
       </section>
       <!-- //section1 -->
 
@@ -147,9 +150,9 @@
           <iframe
             id="youtubePlayer1"
             class="video-iframe iframe"
-            src="https://www.youtube.com/embed/obW4xWXKZjw?enablejsapi=1&mute=1&autoplay=1&controls=0&cc_load_policy=0"
+            src="https://www.youtube.com/embed/obW4xWXKZjw?enablejsapi=1&mute=1&autoplay=1&controls=0&cc_load_policy=0&cc_lang_pref=x&fs=1"
             frameborder="0"
-            allow="autoplay; fullscreen; encrypted-media;"
+            allow="autoplay; fullscreen; encrypted-media; pointer-events"
             allowfullscreen
           ></iframe>
         </div>
