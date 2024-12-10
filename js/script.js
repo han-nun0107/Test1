@@ -94,25 +94,71 @@ function animateText(section) {
   }
 }
 
-// 휠, 스페이스바 이벤트 리스너(iframe 초기화 포함)
+// ESC 키를 제외한 키 입력 차단
+function blockAllKeysExceptEsc(event) {
+  if (event.key === "Escape") {
+    console.log("ESC 키 입력 허용");
+    return; // ESC 키는 허용
+  }
+  event.preventDefault();
+  console.log(`키 입력 차단됨: ${event.key}`);
+}
+
+// Iframe 활성화 상태 관리
+function manageIframeKeyBlocking() {
+  const iframes = document.querySelectorAll("iframe");
+  let isAnyIframeActive = false;
+
+  iframes.forEach((iframe) => {
+    const iframeStyle = window.getComputedStyle(iframe);
+    if (iframeStyle.display === "block") {
+      isAnyIframeActive = true;
+    }
+  });
+
+  if (isAnyIframeActive) {
+    console.log("iframe이 활성화됨, ESC 제외 키 입력 차단 활성화");
+    window.addEventListener("keydown", blockAllKeysExceptEsc);
+  } else {
+    console.log("활성화된 iframe 없음, ESC 제외 키 입력 차단 비활성화");
+    window.removeEventListener("keydown", blockAllKeysExceptEsc);
+  }
+}
+
+// Iframe display 상태 감지
+function observeIframeDisplay() {
+  const iframes = document.querySelectorAll("iframe");
+
+  const observer = new MutationObserver(() => {
+    manageIframeKeyBlocking();
+  });
+
+  iframes.forEach((iframe) => {
+    observer.observe(iframe, {
+      attributes: true,
+      attributeFilter: ["style"], // style 속성 변경 감지
+    });
+  });
+}
+
+// DOMContentLoaded 이후 실행
+document.addEventListener("DOMContentLoaded", () => {
+  observeIframeDisplay();
+});
+
+// 휠, 스페이스바 이벤트 리스너(iframe 초기화)
 function resetAllIframes() {
   const iframes = document.querySelectorAll("iframe");
   iframes.forEach((iframe) => {
-    const iframeStyle = window.getComputedStyle(iframe);
-    if (iframeStyle.display === "none") {
-      // display: none 상태일 때만 초기화
-      iframe.contentWindow.postMessage(
-        '{"event":"command","func":"pauseVideo","args":""}',
-        "*"
-      );
-      iframe.contentWindow.postMessage(
-        '{"event":"command","func":"seekTo","args":[0, true]}',
-        "*"
-      );
-      console.log(`iframe ${iframe.id} 초기화 완료 (display: none 상태)`);
-    } else {
-      console.log(`iframe ${iframe.id} 초기화 건너뜀 (display: block 상태)`);
-    }
+    iframe.contentWindow.postMessage(
+      '{"event":"command","func":"pauseVideo","args":""}',
+      "*"
+    );
+    iframe.contentWindow.postMessage(
+      '{"event":"command","func":"seekTo","args":[0, true]}',
+      "*"
+    );
+    console.log(`iframe ${iframe.id} 초기화 완료`);
   });
 }
 
