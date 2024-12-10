@@ -291,6 +291,15 @@ document.addEventListener("DOMContentLoaded", () => {
       const video = section.querySelector("video");
 
       if (iframe) {
+        const iframeStyle = window.getComputedStyle(iframe);
+
+        // iframe이 block 상태인 경우 초기화 건너뛰기
+        if (iframeStyle.display === "block") {
+          console.log(`iframe ${iframe.id}는 block 상태이므로 초기화하지 않음`);
+          return;
+        }
+
+        // iframe 초기화
         iframe.contentWindow.postMessage(
           '{"event":"command","func":"pauseVideo","args":""}',
           "*"
@@ -299,10 +308,14 @@ document.addEventListener("DOMContentLoaded", () => {
           '{"event":"command","func":"seekTo","args":[0, true]}',
           "*"
         );
+        console.log(`iframe ${iframe.id} 초기화 완료`);
       }
+
       if (video) {
+        // video 초기화
         video.pause();
         video.currentTime = 0;
+        console.log(`video ${video.id || "anonymous"} 초기화 완료`);
       }
     });
   }
