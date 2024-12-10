@@ -158,6 +158,11 @@ document.addEventListener("DOMContentLoaded", () => {
         if (entry.isIntersecting) {
           console.log(`${entry.target.id} 보임`);
           if (iframe) {
+            // 동영상을 0초로 초기화하고 재생
+            iframe.contentWindow.postMessage(
+              '{"event":"command","func":"seekTo","args":[0, true]}',
+              "*"
+            );
             iframe.contentWindow.postMessage(
               '{"event":"command","func":"playVideo","args":""}',
               "*"
@@ -166,13 +171,9 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
           console.log(`${entry.target.id} 벗어남`);
           if (iframe) {
-            // 동영상 일시 정지 및 0초로 초기화
+            // 동영상 일시 정지
             iframe.contentWindow.postMessage(
               '{"event":"command","func":"pauseVideo","args":""}',
-              "*"
-            );
-            iframe.contentWindow.postMessage(
-              '{"event":"command","func":"seekTo","args":[0, true]}',
               "*"
             );
           }
