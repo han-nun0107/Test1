@@ -521,6 +521,11 @@ function blockAllKeysExceptEsc(event) {
     console.log("ESC 키 입력 허용");
     return; // ESC 키는 허용
   }
+  if (event.code === "Space") {
+    console.log("스페이스 바 입력 차단");
+    event.preventDefault(); // 스페이스 바 기본 동작 차단
+    return;
+  }
   event.preventDefault();
   console.log(`키 입력 차단됨: ${event.key}`);
 }
