@@ -8,7 +8,6 @@ a {
 }
 
 body {
-  color: #fff;
   font-family: "NexonLv1Gothic";
   font-weight: 300;
 }
@@ -139,24 +138,54 @@ body {
 #section7 .parallax__item__img {
 } */
 
-#section3,
-#section5,
-#section7,
-#section9 {
+#section1 {
   position: static;
   overflow: visible;
   z-index: auto;
-  background-color: #f1c40f;
+  background-color: #ffd1dc;
 }
 
-#section2,
-#section4,
-#section6,
+#section2 {
+  position: static;
+  overflow: visible;
+  z-index: auto;
+  background-color: #aec6cf;
+}
+#section3 {
+  position: static;
+  overflow: visible;
+  z-index: auto;
+  background-color: #d5e8d4;
+}
+#section4 {
+  position: static;
+  overflow: visible;
+  z-index: auto;
+  background-color: #e6e6fa;
+}
+#section5 {
+  position: static;
+  overflow: visible;
+  z-index: auto;
+  background-color: #fffacd;
+}
+#section6 {
+  position: static;
+  overflow: visible;
+  z-index: auto;
+  background-color: #ffdab9;
+}
+#section7 {
+  position: static;
+  overflow: visible;
+  z-index: auto;
+  background-color: #f4c2c2;
+}
 #section8 {
   position: static;
   overflow: visible;
   z-index: auto;
-  background-color: #3498db;
+  background-color: #b0e0e6;
 }
 
 #parallax__cont {

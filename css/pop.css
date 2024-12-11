@@ -8,7 +8,6 @@ a {
 }
 
 body {
-  color: #fff;
   font-family: "NexonLv1Gothic";
   font-weight: 300;
 }
@@ -138,26 +137,6 @@ body {
   
   #section7 .parallax__item__img {
   } */
-
-#section3,
-#section5,
-#section7,
-#section9 {
-  position: static;
-  overflow: visible;
-  z-index: auto;
-  background-color: #f1c40f;
-}
-
-#section2,
-#section4,
-#section6,
-#section8 {
-  position: static;
-  overflow: visible;
-  z-index: auto;
-  background-color: #3498db;
-}
 
 #parallax__cont {
   display: flex;
