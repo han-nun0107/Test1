@@ -153,7 +153,7 @@ video {
 }
 
 .music {
-  margin-top: 10%;
+  margin-top: 45%;
 }
 #main,
 #main-p,
@@ -171,15 +171,13 @@ video {
 #j-pop,
 #j-pop-k,
 #j-pop-p {
-  width: 150px; /* 버튼 크기 */
-  padding: 10px;
+  padding: 15px;
   text-align: center;
   font-size: 20px;
   font-weight: bold;
   color: white;
-  background-color: rgba(0, 0, 0, 1);
-
-  border-radius: 10px;
+  background-color: rgba(26, 188, 156, 1);
+  border-radius: 13px;
   cursor: pointer;
 }
 #k-pop:hover,
@@ -198,7 +196,7 @@ video {
 #main-p:hover,
 #main-j:hover,
 #main-k:hover {
-  background-color: rgba(26, 188, 156, 1);
+  background-color: rgba(0, 0, 0, 1);
   color: white;
 }
 
