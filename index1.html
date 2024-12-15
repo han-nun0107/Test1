@@ -7,17 +7,13 @@
     <!--  <meta property="og:url" content="kimquokka.dothome.co.kr" /> -->
     <meta property="og:image" content="./asset/img/ogImg.png" />
     <meta property="og:description" content="madeBy han_nun" />
-    <title>K-POP</title>
+    <title>Happy Birthday!</title>
     <link
       href="https://cdn.jsdelivr.net/gh/spoqa/spoqa-han-sans/css/SpoqaHanSansNeo.css"
       rel="stylesheet"
     />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="asset/img/k-pop.png"
-    />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="asset/img/main.png" />
 
     <!-- GSAP와 플러그인 로드 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -28,9 +24,20 @@
     <!-- 스타일 -->
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/slide.css" />
-    <link rel="stylesheet" href="css/pop.css" />
   </head>
   <body>
+    <!-- 로딩 페이지 -->
+    <div id="loading-page">
+      <div class="spinner"></div>
+      <div class="loading-div">
+        <p class="loading-p">로딩 중</p>
+        <p class="loading-p">조금만 기다려 주세요.</p>
+      </div>
+      <div class="progress-bar">
+        <div class="progress"></div>
+      </div>
+    </div>
+
     <!-- 실제 콘텐츠 -->
     <header class="header">
       <nav>
@@ -67,25 +74,39 @@
 
     <!-- 메인 섹션 -->
     <main id="parallax__cont">
-      <section
-        id="section1"
-        class="parallax__item home"
-        style="
-          background-image: url(./asset/img/k-popBG.png);
-          background-repeat: no-repeat;
-          background-size: cover;
-          background-position: center;
-        "
-      >
-        <div class="music">
-          <a href="index.html" id="main-k">메인 페이지</a>
-          <a href="q-pop.html" id="q-pop-k">쿼카 노래</a>
-          <a href="pop.html" id="pop-k">POP</a>
-          <a href="j-pop.html" id="j-pop-k">J-POP</a>
+      <section id="section1" class="parallax__item">
+        <div class="left-section">
+          <video id="section1-video" autoplay loop muted playsinline>
+            <source src="asset/video/제리.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="right-section">
+          <p id="section1-p" style="color: #4d4d4d">
+            <strong style="font-size: 40px; color: red">사용 설명</strong><br />
+            1. <span style="color: red">마우스 휠 or 스페이스 바</span>를
+            누르시면 옆 페이지로 넘어갈 수 있습니다!<br />
+            <br />2. 화면 비율은 <strong style="color: red">100%</strong>로
+            맞춰주세요! (ctrl + 마우스 휠)<br />
+            <br />3. 메인 페이지는 보고 계시는 페이지 포함 총 8개로 준비되어
+            있습니다.<br />
+            <br />4. 각 페이지에는
+            <span style="color: red">영상 나오는 영어</span> 있는데 클릭 시
+            영상이 켜집니다.<br />
+            <br />
+            5. 만약 동영상이 안 나온다면 ctrl + shift + R를 눌러주세요!<br />
+            <br />6. 영상은 유튜브와 직접 연결한 것으로
+            <strong style="color: red">저작권 문제는 없습니다.</strong> (유튜브
+            퍼가기 기능 사용)<br />
+            <br />
+            7. 부족한 실력이지만 잘 봐주셨으면 좋겠습니다! 감사합니다!
+            <br />
+            <br />
+            8. 마지막으로 🎉생일 축하해🎉 쿼카야!
+          </p>
         </div>
       </section>
-      <!-- //section1 -->
 
+      <!-- //section1 -->
       <section id="section2" class="parallax__item">
         <div class="split-container">
           <!-- 왼쪽 섹션 -->
@@ -108,7 +129,7 @@
                     id="text-element1"
                     class="toggle-text"
                   >
-                    생
+                    Q
                   </text>
                 </clipPath>
               </defs>
@@ -125,24 +146,17 @@
                   muted
                   playsinline
                 >
-                  <source
-                    src="asset/video/하루에도 열두 번.mp4"
-                    type="video/mp4"
-                  />
+                  <source src="asset/video/novelbright.mp4" type="video/mp4" />
                 </video>
               </foreignObject>
             </svg>
           </div>
           <div class="right-section">
             <p id="section2-p">
-              <span class="title">하루에도 열두 번</span><br />
-              <span class="subtitle">윤건</span><br />
-              <span class="lyrics"
-                >Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Dolores impedit fugit nesciunt, labore totam nobis sint, ipsum
-                odio minima molestias optio blanditiis distinctio corporis eius
-                eum non mollitia sunt eaque.</span
-              >
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
+              corrupti molestias earum eum corporis quaerat tempora maiores,
+              quidem recusandae libero nostrum. Eum deleniti minima ullam rerum
+              optio aspernatur provident distinctio? <br />
             </p>
           </div>
         </div>
@@ -152,15 +166,15 @@
           <iframe
             id="youtubePlayer1"
             class="video-iframe iframe"
-            src="https://www.youtube.com/embed/N64BYzUcqmM?enablejsapi=1&mute=1&autoplay=1&controls=0&cc_load_policy=0&cc_lang_pref=x&fs=1"
+            src="https://www.youtube.com/embed/obW4xWXKZjw?enablejsapi=1&mute=1&autoplay=1&controls=0&cc_load_policy=0"
             frameborder="0"
-            allow="autoplay; fullscreen; encrypted-media; pointer-events"
+            allow="autoplay; fullscreen; encrypted-media;"
             allowfullscreen
           ></iframe>
         </div>
       </section>
-      <!-- //section2 -->
 
+      <!-- //section2 -->
       <section id="section3" class="parallax__item">
         <div class="split-container">
           <!-- 왼쪽 섹션 -->
@@ -182,7 +196,7 @@
                     text-anchor="middle"
                     id="text-element2"
                   >
-                    일
+                    U
                   </text>
                 </clipPath>
               </defs>
@@ -199,7 +213,7 @@
                   muted
                   playsinline
                 >
-                  <source src="asset/video/ON N ON.mp4" type="video/mp4" />
+                  <source src="asset/video/orange.mp4" type="video/mp4" />
                 </video>
               </foreignObject>
             </svg>
@@ -207,14 +221,10 @@
           <!-- 오른쪽 섹션 -->
           <div class="right-section">
             <p id="section3-p">
-              <span class="title">ON N ON</span><br />
-              <span class="subtitle">미소</span><br />
-              <span class="lyrics"
-                >Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Dolores impedit fugit nesciunt, labore totam nobis sint, ipsum
-                odio minima molestias optio blanditiis distinctio corporis eius
-                eum non mollitia sunt eaque.</span
-              >
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero,
+              voluptatum veniam veritatis quia maiores repellendus
+              necessitatibus facere beatae odit quod at, unde illum, aliquam
+              culpa? Dignissimos voluptatum cumque fugiat cupiditate! <br />
             </p>
           </div>
         </div>
@@ -224,7 +234,7 @@
           <iframe
             id="youtubePlayer2"
             class="video-iframe iframe"
-            src="https://www.youtube.com/embed/bVxe8_8RsjQ?enablejsapi=1&mute=1&autoplay=1&controls=0&cc_load_policy=0&cc_lang_pref=x&fs=1"
+            src="https://www.youtube.com/embed/ENaeyFPC3hA?enablejsapi=1&mute=1&autoplay=1&controls=0&cc_load_policy=0&cc_lang_pref=x&fs=1"
             frameborder="0"
             allow="autoplay; fullscreen; encrypted-media"
             allowfullscreen
@@ -233,7 +243,6 @@
       </section>
 
       <!-- //section3 -->
-
       <section id="section4" class="parallax__item">
         <div class="split-container">
           <!-- 왼쪽 섹션 -->
@@ -255,7 +264,7 @@
                     text-anchor="middle"
                     id="text-element3"
                   >
-                    축
+                    O
                   </text>
                 </clipPath>
               </defs>
@@ -264,8 +273,15 @@
                 height="100%"
                 clip-path="url(#text-mask3)"
               >
-                <video id="video-element3" autoplay loop muted playsinline>
-                  <source src="asset/video/I Remember.mp4" type="video/mp4" />
+                <video
+                  class="video"
+                  id="video-element3"
+                  autoplay
+                  loop
+                  muted
+                  playsinline
+                >
+                  <source src="asset/video/fragrance.mp4" type="video/mp4" />
                 </video>
               </foreignObject>
             </svg>
@@ -273,14 +289,10 @@
           <!-- 오른쪽 섹션 -->
           <div class="right-section">
             <p id="section4-p">
-              <span class="title">I Remember</span><br />
-              <span class="subtitle">방용국</span><br />
-              <span class="lyrics"
-                >Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Dolores impedit fugit nesciunt, labore totam nobis sint, ipsum
-                odio minima molestias optio blanditiis distinctio corporis eius
-                eum non mollitia sunt eaque.</span
-              >
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero,
+              voluptatum veniam veritatis quia maiores repellendus
+              necessitatibus facere beatae odit quod at, unde illum, aliquam
+              culpa? Dignissimos voluptatum cumque fugiat cupiditate! <br />
             </p>
           </div>
         </div>
@@ -290,15 +302,15 @@
           <iframe
             id="youtubePlayer3"
             class="video-iframe"
-            src="https://www.youtube.com/embed/Z2ae5qRWPCg?enablejsapi=1&mute=1&autoplay=1&controls=0&cc_load_policy=0&cc_lang_pref=x&fs=1"
+            src="https://www.youtube.com/embed/P6WmLAMuaeM?enablejsapi=1&mute=1&autoplay=1&controls=0&cc_load_policy=0&cc_lang_pref=x&fs=1"
             frameborder="0"
             allow="autoplay; fullscreen; encrypted-media"
             allowfullscreen
           ></iframe>
         </div>
       </section>
-      <!-- //section4 -->
 
+      <!-- //section4 -->
       <section id="section5" class="parallax__item">
         <div class="split-container">
           <!-- 왼쪽 섹션 -->
@@ -320,7 +332,7 @@
                     text-anchor="middle"
                     id="text-element4"
                   >
-                    하
+                    K
                   </text>
                 </clipPath>
               </defs>
@@ -329,8 +341,15 @@
                 height="100%"
                 clip-path="url(#text-mask4)"
               >
-                <video id="video-element4" autoplay loop muted playsinline>
-                  <source src="asset/video/야행성.mp4" type="video/mp4" />
+                <video
+                  class="video"
+                  id="video-element4"
+                  autoplay
+                  loop
+                  muted
+                  playsinline
+                >
+                  <source src="asset/video/mela.mp4" type="video/mp4" />
                 </video>
               </foreignObject>
             </svg>
@@ -338,14 +357,10 @@
           <!-- 오른쪽 섹션 -->
           <div class="right-section">
             <p id="section5-p">
-              <span class="title">야행성</span><br />
-              <span class="subtitle">원위</span><br />
-              <span class="lyrics"
-                >Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Dolores impedit fugit nesciunt, labore totam nobis sint, ipsum
-                odio minima molestias optio blanditiis distinctio corporis eius
-                eum non mollitia sunt eaque.</span
-              >
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero,
+              voluptatum veniam veritatis quia maiores repellendus
+              necessitatibus facere beatae odit quod at, unde illum, aliquam
+              culpa? Dignissimos voluptatum cumque fugiat cupiditate! <br />
             </p>
           </div>
         </div>
@@ -355,15 +370,15 @@
           <iframe
             id="youtubePlayer4"
             class="video-iframe"
-            src="https://www.youtube.com/embed/oqaY9H1VOV8?enablejsapi=1&mute=1&autoplay=1&controls=0&cc_load_policy=0&cc_lang_pref=x&fs=1"
+            src="https://www.youtube.com/embed/T59SXQlneLY?enablejsapi=1&mute=1&autoplay=1&controls=0&cc_load_policy=0&cc_lang_pref=x&fs=1"
             frameborder="0"
             allow="autoplay; fullscreen; encrypted-media"
             allowfullscreen
           ></iframe>
         </div>
       </section>
-      <!-- //section5 -->
 
+      <!-- //section5 -->
       <section id="section6" class="parallax__item">
         <div class="split-container">
           <!-- 왼쪽 섹션 -->
@@ -385,7 +400,7 @@
                     text-anchor="middle"
                     id="text-element5"
                   >
-                    해
+                    K
                   </text>
                 </clipPath>
               </defs>
@@ -394,11 +409,15 @@
                 height="100%"
                 clip-path="url(#text-mask5)"
               >
-                <video id="video-element5" autoplay loop muted playsinline>
-                  <source
-                    src="asset/video/빛이 나는 너에게.mp4"
-                    type="video/mp4"
-                  />
+                <video
+                  class="video"
+                  id="video-element5"
+                  autoplay
+                  loop
+                  muted
+                  playsinline
+                >
+                  <source src="asset/video/neko.mp4" type="video/mp4" />
                 </video>
               </foreignObject>
             </svg>
@@ -406,14 +425,10 @@
           <!-- 오른쪽 섹션 -->
           <div class="right-section">
             <p id="section6-p">
-              <span class="title">빛이 나는 너에게</span><br />
-              <span class="subtitle">DAWN</span><br />
-              <span class="lyrics"
-                >Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Dolores impedit fugit nesciunt, labore totam nobis sint, ipsum
-                odio minima molestias optio blanditiis distinctio corporis eius
-                eum non mollitia sunt eaque.</span
-              >
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero,
+              voluptatum veniam veritatis quia maiores repellendus
+              necessitatibus facere beatae odit quod at, unde illum, aliquam
+              culpa? Dignissimos voluptatum cumque fugiat cupiditate! <br />
             </p>
           </div>
         </div>
@@ -423,15 +438,15 @@
           <iframe
             id="youtubePlayer5"
             class="video-iframe"
-            src="https://www.youtube.com/embed/yyrKLHNCbq0?enablejsapi=1&mute=1&autoplay=1&controls=0&cc_load_policy=0&cc_lang_pref=x&fs=1"
+            src="https://www.youtube.com/embed/vGi6b7ISiPg?enablejsapi=1&mute=1&autoplay=1&controls=0&cc_load_policy=0&cc_lang_pref=x&fs=1"
             frameborder="0"
             allow="autoplay; fullscreen; encrypted-media"
             allowfullscreen
           ></iframe>
         </div>
       </section>
-      <!-- //section6 -->
 
+      <!-- //section6 -->
       <section id="section7" class="parallax__item">
         <div class="split-container">
           <!-- 왼쪽 섹션 -->
@@ -453,7 +468,7 @@
                     text-anchor="middle"
                     id="text-element6"
                   >
-                    !
+                    A
                   </text>
                 </clipPath>
               </defs>
@@ -462,8 +477,15 @@
                 height="100%"
                 clip-path="url(#text-mask6)"
               >
-                <video id="video-element6" autoplay loop muted playsinline>
-                  <source src="asset/video/HAPPY.mp4" type="video/mp4" />
+                <video
+                  class="video"
+                  id="video-element6"
+                  autoplay
+                  loop
+                  muted
+                  playsinline
+                >
+                  <source src="asset/video/refrain.mp4" type="video/mp4" />
                 </video>
               </foreignObject>
             </svg>
@@ -471,14 +493,10 @@
           <!-- 오른쪽 섹션 -->
           <div class="right-section">
             <p id="section7-p">
-              <span class="title">Happy</span><br />
-              <span class="subtitle">Day6</span><br />
-              <span class="lyrics"
-                >Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Dolores impedit fugit nesciunt, labore totam nobis sint, ipsum
-                odio minima molestias optio blanditiis distinctio corporis eius
-                eum non mollitia sunt eaque.</span
-              >
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero,
+              voluptatum veniam veritatis quia maiores repellendus
+              necessitatibus facere beatae odit quod at, unde illum, aliquam
+              culpa? Dignissimos voluptatum cumque fugiat cupiditate! <br />
             </p>
           </div>
         </div>
@@ -488,21 +506,21 @@
           <iframe
             id="youtubePlayer6"
             class="video-iframe"
-            src="https://www.youtube.com/embed/2dFwndi4ung?enablejsapi=1&mute=1&autoplay=1&controls=0&cc_load_policy=0&cc_lang_pref=x&fs=1"
+            src="https://www.youtube.com/embed/mvkbCZfwWzA?enablejsapi=1&mute=1&autoplay=1&controls=0&cc_load_policy=0&cc_lang_pref=x&fs=1"
             frameborder="0"
             allow="autoplay; fullscreen; encrypted-media"
             allowfullscreen
           ></iframe>
         </div>
       </section>
-      <!-- //section7 -->
 
+      <!-- //section7 -->
       <section id="section8" class="parallax__item">
         <div>
           <p class="thx"></p>
           <div class="lastBtn">
-            <a href="index1.html" class="button">메인 페이지 가기</a>
-            <a href="song.html" class="button">노래 페이지 가기</a>
+            <a href="index1.html" class="button">처음으로 돌아가기</a>
+            <a href="song.html" class="button">노래 추천으로 가기</a>
           </div>
         </div>
       </section>
