@@ -552,6 +552,12 @@ iframe::cue {
   z-index: 10; /* 다른 요소 위에 배치 */
 }
 
+#section1-video {
+  width: 800px;
+  padding-top: 70px;
+  pointer-events: none;
+}
+
 #section1-p {
   color: #4a4a4a;
 }

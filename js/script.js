@@ -96,17 +96,34 @@ function animateText(section) {
 
 // 휠, 스페이스바 이벤트 리스너(iframe 초기화)
 function resetAllIframes() {
-  const iframes = document.querySelectorAll("iframe");
-  iframes.forEach((iframe) => {
-    iframe.contentWindow.postMessage(
-      '{"event":"command","func":"pauseVideo","args":""}',
-      "*"
-    );
-    iframe.contentWindow.postMessage(
-      '{"event":"command","func":"seekTo","args":[0, true]}',
-      "*"
-    );
-    console.log(`iframe ${iframe.id} 초기화 완료`);
+  const sections = document.querySelectorAll(".parallax__item");
+  sections.forEach((section) => {
+    console.log(`초기화 처리 중인 섹션: ${section.id}`);
+    if (section.id === "section1") {
+      console.log("section1 초기화 제외");
+      return;
+    }
+
+    const iframe = section.querySelector("iframe");
+    const video = section.querySelector("video");
+
+    if (iframe) {
+      iframe.contentWindow.postMessage(
+        '{"event":"command","func":"pauseVideo","args":""}',
+        "*"
+      );
+      iframe.contentWindow.postMessage(
+        '{"event":"command","func":"seekTo","args":[0, true]}',
+        "*"
+      );
+      console.log(`iframe ${iframe.id} 초기화 완료`);
+    }
+
+    if (video) {
+      video.pause();
+      video.currentTime = 0;
+      console.log(`video ${video.id || "anonymous"} 초기화 완료`);
+    }
   });
 }
 
