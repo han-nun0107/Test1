@@ -7,17 +7,13 @@
     <!--  <meta property="og:url" content="kimquokka.dothome.co.kr" /> -->
     <meta property="og:image" content="./asset/img/ogImg.png" />
     <meta property="og:description" content="madeBy han_nun" />
-    <title>K-POP</title>
+    <title>Happy Birthday!</title>
     <link
       href="https://cdn.jsdelivr.net/gh/spoqa/spoqa-han-sans/css/SpoqaHanSansNeo.css"
       rel="stylesheet"
     />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="asset/img/k-pop.png"
-    />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="asset/img/main.png" />
 
     <!-- GSAP와 플러그인 로드 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -28,9 +24,20 @@
     <!-- 스타일 -->
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/slide.css" />
-    <link rel="stylesheet" href="css/pop.css" />
   </head>
   <body>
+    <!-- 로딩 페이지 -->
+    <div id="loading-page">
+      <div class="spinner"></div>
+      <div class="loading-div">
+        <p class="loading-p">로딩 중</p>
+        <p class="loading-p">조금만 기다려 주세요.</p>
+      </div>
+      <div class="progress-bar">
+        <div class="progress"></div>
+      </div>
+    </div>
+
     <!-- 실제 콘텐츠 -->
     <header class="header">
       <nav>
@@ -67,25 +74,39 @@
 
     <!-- 메인 섹션 -->
     <main id="parallax__cont">
-      <section
-        id="section1"
-        class="parallax__item home"
-        style="
-          background-image: url(./asset/img/k-popBG.png);
-          background-repeat: no-repeat;
-          background-size: cover;
-          background-position: center;
-        "
-      >
-        <div class="music">
-          <a href="index.html" id="main-k">메인 페이지</a>
-          <a href="q-pop.html" id="q-pop-k">쿼카 노래, 클립</a>
-          <a href="pop.html" id="pop-k">POP</a>
-          <a href="j-pop.html" id="j-pop-k">J-POP</a>
+      <section id="section1" class="parallax__item">
+        <div class="left-section">
+          <video id="section1-video" autoplay loop muted playsinline>
+            <source src="asset/video/제리.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="right-section">
+          <p id="section1-p" style="color: #4d4d4d">
+            <strong style="font-size: 40px; color: red">사용 설명</strong><br />
+            1. <span style="color: red">마우스 휠 or 스페이스 바</span>를
+            누르시면 옆 페이지로 넘어갈 수 있습니다!<br />
+            <br />2. 화면 비율은 <strong style="color: red">100%</strong>로
+            맞춰주세요! (ctrl + 마우스 휠)<br />
+            <br />3. 메인 페이지는 보고 계시는 페이지 포함 총 8개로 준비되어
+            있습니다.<br />
+            <br />4. 각 페이지에는
+            <span style="color: red">영상 나오는 영어</span> 있는데 클릭 시
+            영상이 켜집니다.<br />
+            <br />
+            5. 만약 동영상이 안 나온다면 ctrl + shift + R를 눌러주세요!<br />
+            <br />6. 영상은 유튜브와 직접 연결한 것으로
+            <strong style="color: red">저작권 문제는 없습니다.</strong> (유튜브
+            퍼가기 기능 사용)<br />
+            <br />
+            7. 부족한 실력이지만 잘 봐주셨으면 좋겠습니다! 감사합니다!
+            <br />
+            <br />
+            8. 마지막으로 <strong>🎉생일 축하해🎉</strong> 쿼카야!
+          </p>
         </div>
       </section>
-      <!-- //section1 -->
 
+      <!-- //section1 -->
       <section id="section2" class="parallax__item">
         <div class="split-container">
           <!-- 왼쪽 섹션 -->
@@ -108,7 +129,7 @@
                     id="text-element1"
                     class="toggle-text"
                   >
-                    생
+                    Q
                   </text>
                 </clipPath>
               </defs>
@@ -126,7 +147,7 @@
                   playsinline
                 >
                   <source
-                    src="asset/video/하루에도 열두 번.mp4"
+                    src="asset/video/Happy Birthday.mp4"
                     type="video/mp4"
                   />
                 </video>
@@ -135,17 +156,8 @@
           </div>
           <div class="right-section">
             <p id="section2-p">
-              <span class="title">하루에도 열두 번</span><br />
-              <span class="subtitle">윤건</span><br />
-              <span class="lyrics"
-                >"하루에도 열두 번"은 이별 후에도 떠나지 않는 연인에 대한
-                그리움과 미련을 중심으로, 헤어진 후의 감정적 혼란과 상실감을
-                담고 있습니다. 윤건 특유의 감미로운 목소리와 서정적인 멜로디가
-                더해져, 이별의 아픔을 섬세하게 전달하는 곡입니다. <br />
-                이 곡은 헤어진 연인을 떠올리는 모든 사람의 마음에 깊은 공감을
-                불러일으키는 노래로, 단순한 후회가 아닌 사랑했던 기억을 되새기며
-                느끼는 감정들을 잘 표현한 작품입니다.</span
-              >
+              Happy Birthday <br />
+              Ra.D
             </p>
           </div>
         </div>
@@ -155,15 +167,15 @@
           <iframe
             id="youtubePlayer1"
             class="video-iframe iframe"
-            src="https://www.youtube.com/embed/N64BYzUcqmM?enablejsapi=1&mute=1&autoplay=1&controls=0&cc_load_policy=0&cc_lang_pref=x&fs=1"
+            src="https://www.youtube.com/embed/qWvFhYWwFQw?enablejsapi=1&mute=1&autoplay=1&controls=0&cc_load_policy=0"
             frameborder="0"
-            allow="autoplay; fullscreen; encrypted-media; pointer-events"
+            allow="autoplay; fullscreen; encrypted-media;"
             allowfullscreen
           ></iframe>
         </div>
       </section>
-      <!-- //section2 -->
 
+      <!-- //section2 -->
       <section id="section3" class="parallax__item">
         <div class="split-container">
           <!-- 왼쪽 섹션 -->
@@ -185,7 +197,7 @@
                     text-anchor="middle"
                     id="text-element2"
                   >
-                    일
+                    U
                   </text>
                 </clipPath>
               </defs>
@@ -202,7 +214,10 @@
                   muted
                   playsinline
                 >
-                  <source src="asset/video/ON N ON.mp4" type="video/mp4" />
+                  <source
+                    src="asset/video/개난장판 싱크룸.mp4"
+                    type="video/mp4"
+                  />
                 </video>
               </foreignObject>
             </svg>
@@ -210,18 +225,7 @@
           <!-- 오른쪽 섹션 -->
           <div class="right-section">
             <p id="section3-p">
-              <span class="title">ON N ON</span><br />
-              <span class="subtitle">미소</span><br />
-              <span class="lyrics"
-                >"ON N ON"은 사랑이라는 감정의 순환성과 중독성을 묘사한 곡으로,
-                감정적으로나 음악적으로나 몰입감을 주는 곡입니다. 관계가 끝난 것
-                같으면서도 계속 반복되고, 멈출 수 없는 사랑의 역설적인 매력을
-                탐구합니다. 미소의 세련된 표현력과 감각적인 사운드가 더해져,
-                청자에게 강렬한 인상을 남기는 작품입니다. <br />
-                결론적으로, 이 곡은 단순한 사랑 노래가 아니라, 사랑이라는 감정의
-                복잡성과 그 안에 내포된 욕망과 반복성을 탐구하는 섬세한 곡으로
-                볼 수 있습니다.</span
-              >
+              개난장판 싱크룸 ㅋㅋ <br />With. 쫄랑, 갈푸짱, 한아련 <br />
             </p>
           </div>
         </div>
@@ -231,7 +235,7 @@
           <iframe
             id="youtubePlayer2"
             class="video-iframe iframe"
-            src="https://www.youtube.com/embed/bVxe8_8RsjQ?enablejsapi=1&mute=1&autoplay=1&controls=0&cc_load_policy=0&cc_lang_pref=x&fs=1"
+            src="https://www.youtube.com/embed/lziybTQgHPs?enablejsapi=1&mute=1&autoplay=1&controls=0&cc_load_policy=0&cc_lang_pref=x&fs=1"
             frameborder="0"
             allow="autoplay; fullscreen; encrypted-media"
             allowfullscreen
@@ -240,7 +244,6 @@
       </section>
 
       <!-- //section3 -->
-
       <section id="section4" class="parallax__item">
         <div class="split-container">
           <!-- 왼쪽 섹션 -->
@@ -262,7 +265,7 @@
                     text-anchor="middle"
                     id="text-element3"
                   >
-                    축
+                    O
                   </text>
                 </clipPath>
               </defs>
@@ -271,29 +274,25 @@
                 height="100%"
                 clip-path="url(#text-mask3)"
               >
-                <video id="video-element3" autoplay loop muted playsinline>
-                  <source src="asset/video/I Remember.mp4" type="video/mp4" />
+                <video
+                  class="video"
+                  id="video-element3"
+                  autoplay
+                  loop
+                  muted
+                  playsinline
+                >
+                  <source
+                    src="asset/video/공포가 뭐죠 ㅋ (취함).mp4"
+                    type="video/mp4"
+                  />
                 </video>
               </foreignObject>
             </svg>
           </div>
           <!-- 오른쪽 섹션 -->
           <div class="right-section">
-            <p id="section4-p">
-              <span class="title">I Remember</span><br />
-              <span class="subtitle">방용국</span><br />
-              <span class="lyrics"
-                >"I Remember"는 이별 후의 복잡한 감정을 담은 곡으로, 사랑했던
-                상대를 기억하는 동시에 그로 인한 상처와 분노를 솔직하게
-                드러냅니다. <br />
-                방용국의 강렬한 감정 표현과 음악적 구성은 이 곡의 메시지를 더욱
-                강하게 전달하며, 사랑과 이별을 경험한 사람들이 깊이 공감할 수
-                있는 작품입니다. <br />
-                결론적으로, 이 곡은 잊을 수 없는 사랑과 그로 인한 상처를
-                직설적으로 표현한 곡으로, 방용국의 감정적인 랩과 음악적 색채가
-                돋보이는 트랙입니다.</span
-              >
-            </p>
+            <p id="section4-p">공포가 뭐죠 ㅋ (취함) <br /></p>
           </div>
         </div>
 
@@ -302,15 +301,15 @@
           <iframe
             id="youtubePlayer3"
             class="video-iframe"
-            src="https://www.youtube.com/embed/Z2ae5qRWPCg?enablejsapi=1&mute=1&autoplay=1&controls=0&cc_load_policy=0&cc_lang_pref=x&fs=1"
+            src="https://www.youtube.com/embed/eISuRX6siCs?enablejsapi=1&mute=1&autoplay=1&controls=0&cc_load_policy=0&cc_lang_pref=x&fs=1"
             frameborder="0"
             allow="autoplay; fullscreen; encrypted-media"
             allowfullscreen
           ></iframe>
         </div>
       </section>
-      <!-- //section4 -->
 
+      <!-- //section4 -->
       <section id="section5" class="parallax__item">
         <div class="split-container">
           <!-- 왼쪽 섹션 -->
@@ -332,7 +331,7 @@
                     text-anchor="middle"
                     id="text-element4"
                   >
-                    하
+                    K
                   </text>
                 </clipPath>
               </defs>
@@ -341,8 +340,18 @@
                 height="100%"
                 clip-path="url(#text-mask4)"
               >
-                <video id="video-element4" autoplay loop muted playsinline>
-                  <source src="asset/video/야행성.mp4" type="video/mp4" />
+                <video
+                  class="video"
+                  id="video-element4"
+                  autoplay
+                  loop
+                  muted
+                  playsinline
+                >
+                  <source
+                    src="asset/video/아름다운 나라 국악ver..mp4"
+                    type="video/mp4"
+                  />
                 </video>
               </foreignObject>
             </svg>
@@ -350,18 +359,7 @@
           <!-- 오른쪽 섹션 -->
           <div class="right-section">
             <p id="section5-p">
-              <span class="title">야행성</span><br />
-              <span class="subtitle">원위</span><br />
-              <span class="lyrics"
-                >"야행성"은 밤이라는 시간대를 사랑과 연결하여, 낮에는 숨겨졌던
-                감정이 밤이 되면 드러나는 과정을 섬세하게 묘사한 곡입니다.
-                사랑의 설렘과 갈망, 그리고 상대를 향한 진심 어린 고백이 어우러져
-                청자에게 감동을 줍니다. <br />
-                밤이라는 은유적 배경과 사랑의 감정이 조화를 이루며, 원위 특유의
-                감성적이고 세련된 음악 스타일을 잘 보여주는 곡입니다. <br />
-                결국 이 곡은 "사랑은 밤처럼 깊고 강렬하며, 빛이 될 수 있다"는
-                메시지를 전합니다.</span
-              >
+              아름다운 나라 국악 ver. <br />With. 토뤼, 비쥬<br />
             </p>
           </div>
         </div>
@@ -371,15 +369,15 @@
           <iframe
             id="youtubePlayer4"
             class="video-iframe"
-            src="https://www.youtube.com/embed/oqaY9H1VOV8?enablejsapi=1&mute=1&autoplay=1&controls=0&cc_load_policy=0&cc_lang_pref=x&fs=1"
+            src="https://www.youtube.com/embed/DmfZ5LbKc-c?enablejsapi=1&mute=1&autoplay=1&controls=0&cc_load_policy=0&cc_lang_pref=x&fs=1"
             frameborder="0"
             allow="autoplay; fullscreen; encrypted-media"
             allowfullscreen
           ></iframe>
         </div>
       </section>
-      <!-- //section5 -->
 
+      <!-- //section5 -->
       <section id="section6" class="parallax__item">
         <div class="split-container">
           <!-- 왼쪽 섹션 -->
@@ -401,7 +399,7 @@
                     text-anchor="middle"
                     id="text-element5"
                   >
-                    해
+                    K
                   </text>
                 </clipPath>
               </defs>
@@ -410,9 +408,16 @@
                 height="100%"
                 clip-path="url(#text-mask5)"
               >
-                <video id="video-element5" autoplay loop muted playsinline>
+                <video
+                  class="video"
+                  id="video-element5"
+                  autoplay
+                  loop
+                  muted
+                  playsinline
+                >
                   <source
-                    src="asset/video/빛이 나는 너에게.mp4"
+                    src="asset/video/쿼카가 찾아왔다굿!.mp4"
                     type="video/mp4"
                   />
                 </video>
@@ -421,21 +426,7 @@
           </div>
           <!-- 오른쪽 섹션 -->
           <div class="right-section">
-            <p id="section6-p">
-              <span class="title">빛이 나는 너에게</span><br />
-              <span class="subtitle">DAWN</span><br />
-              <span class="lyrics"
-                >"빛이 나는 너에게"는 사랑하는 사람의 존재를 찬미하고, 그로 인해
-                변화된 자신의 삶을 돌아보며 진심으로 감사하는 곡입니다. <br />
-                사랑의 본질은 상대를 통해 자신이 더 나아지고, 상대 역시
-                행복해지기를 바라는 순수한 마음임을 강조합니다. 이 곡은 사랑이
-                주는 힘과 아름다움을 덤덤하면서도 깊이 있는 어조로 표현하며,
-                듣는 이에게도 따뜻한 위로와 공감을 선사합니다. <br />
-                결론적으로, "빛이 나는 너에게"는 사랑하는 사람에 대한 무조건적인
-                사랑과 감사, 그리고 그 사랑이 가져다주는 삶의 밝은 순간들을
-                담아낸 따뜻한 고백의 노래입니다.</span
-              >
-            </p>
+            <p id="section6-p">쿼카가 찾아왔다굿!⭐ <br /></p>
           </div>
         </div>
 
@@ -444,15 +435,15 @@
           <iframe
             id="youtubePlayer5"
             class="video-iframe"
-            src="https://www.youtube.com/embed/yyrKLHNCbq0?enablejsapi=1&mute=1&autoplay=1&controls=0&cc_load_policy=0&cc_lang_pref=x&fs=1"
+            src="https://www.youtube.com/embed/zn-IGMqSnpQ?enablejsapi=1&mute=1&autoplay=1&controls=0&cc_load_policy=0&cc_lang_pref=x&fs=1"
             frameborder="0"
             allow="autoplay; fullscreen; encrypted-media"
             allowfullscreen
           ></iframe>
         </div>
       </section>
-      <!-- //section6 -->
 
+      <!-- //section6 -->
       <section id="section7" class="parallax__item">
         <div class="split-container">
           <!-- 왼쪽 섹션 -->
@@ -474,7 +465,7 @@
                     text-anchor="middle"
                     id="text-element6"
                   >
-                    !
+                    A
                   </text>
                 </clipPath>
               </defs>
@@ -483,31 +474,25 @@
                 height="100%"
                 clip-path="url(#text-mask6)"
               >
-                <video id="video-element6" autoplay loop muted playsinline>
-                  <source src="asset/video/HAPPY.mp4" type="video/mp4" />
+                <video
+                  class="video"
+                  id="video-element6"
+                  autoplay
+                  loop
+                  muted
+                  playsinline
+                >
+                  <source
+                    src="asset/video/흔한 버튜버의 팬미팅.mp4"
+                    type="video/mp4"
+                  />
                 </video>
               </foreignObject>
             </svg>
           </div>
           <!-- 오른쪽 섹션 -->
           <div class="right-section">
-            <p id="section7-p">
-              <span class="title">Happy</span><br />
-              <span class="subtitle">Day6</span><br />
-              <span class="lyrics"
-                >"Happy"는 표면적으로는 밝은 사랑 노래처럼 보이지만, 깊이 들어가
-                보면 사랑과 이별, 그리고 행복의 의미를 탐구하는 곡입니다.
-                사랑하는 사람과 함께했던 시간 속에서의 진정한 행복을
-                기억하면서도, 이별 후 그 행복을 다시 찾으려는 과정을 섬세하게
-                그려냅니다. <br />
-                결국 이 곡은 "행복은 사랑을 통해 정의되지만, 그 사랑이 사라진
-                후에도 자신만의 행복을 찾아야 한다"는 메시지를 전하고 있습니다.
-                <br />
-                DAY6의 감성적인 음악 스타일과 보컬이 이러한 메시지를 더욱
-                강렬하게 전달하며, 이별과 행복에 대해 깊은 공감을
-                불러일으킵니다.</span
-              >
-            </p>
+            <p id="section7-p">흔한 버튜버의 팬미팅 <br /></p>
           </div>
         </div>
 
@@ -516,21 +501,21 @@
           <iframe
             id="youtubePlayer6"
             class="video-iframe"
-            src="https://www.youtube.com/embed/2dFwndi4ung?enablejsapi=1&mute=1&autoplay=1&controls=0&cc_load_policy=0&cc_lang_pref=x&fs=1"
+            src="https://www.youtube.com/embed/vykjLKOq9IA?enablejsapi=1&mute=1&autoplay=1&controls=0&cc_load_policy=0&cc_lang_pref=x&fs=1"
             frameborder="0"
             allow="autoplay; fullscreen; encrypted-media"
             allowfullscreen
           ></iframe>
         </div>
       </section>
-      <!-- //section7 -->
 
+      <!-- //section7 -->
       <section id="section8" class="parallax__item">
         <div>
           <p class="thx"></p>
           <div class="lastBtn">
-            <a href="main.html" class="button">메인 페이지 가기</a>
-            <a href="song.html" class="button">노래 페이지 가기</a>
+            <a href="main.html" class="button">처음으로 돌아가기</a>
+            <a href="song.html" class="button">노래 추천으로 가기</a>
           </div>
         </div>
       </section>
