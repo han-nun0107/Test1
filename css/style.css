@@ -473,6 +473,10 @@ iframe::cue {
   z-index: 20;
 }
 
+.right-section-font {
+  font-family: "Jua", sans-serif;
+}
+
 .skip-area {
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.8);
@@ -584,4 +588,12 @@ iframe::cue {
 
 #section7-p {
   color: #5a2d2d;
+}
+
+.main-p {
+  font-size: 70px;
+}
+
+.sub-p {
+  font-size: 50px;
 }

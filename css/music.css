@@ -174,27 +174,27 @@ header .nav-links li {
 
 #main {
   top: 93%; /* 화면의 20% 위치 */
-  left: 30%; /* 왼쪽으로 5% */
+  left: 24%; /* 왼쪽으로 5% */
 }
 
 #k-pop {
   top: 93%; /* 화면의 20% 위치 */
-  left: 40%; /* 왼쪽으로 5% */
+  left: 34%; /* 왼쪽으로 5% */
 }
 
 #pop {
   top: 93%; /* 화면의 35% 위치 */
-  left: 50%; /* 왼쪽으로 5% */
+  left: 44%; /* 왼쪽으로 5% */
 }
 
 #j-pop {
   top: 93%; /* 화면의 50% 위치 */
-  left: 60%; /* 왼쪽으로 5% */
+  left: 54%; /* 왼쪽으로 5% */
 }
 
 #q-pop {
   top: 93%;
-  left: 70%;
+  left: 64%;
 }
 .music:hover {
   background-color: rgba(0, 0, 0, 0.8);
